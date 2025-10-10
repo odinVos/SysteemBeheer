@@ -1,7 +1,8 @@
-interface Lender {
+import CreateLender from "./CreateLender";
+
+interface Lender extends CreateLender {
   id: string;
-  name: string;
-  passNumber: string;
+  lastTimeLent: Date;
 }
 
 export default Lender;

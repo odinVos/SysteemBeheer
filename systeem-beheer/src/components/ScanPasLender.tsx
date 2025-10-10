@@ -1,14 +1,19 @@
 import React from "react";
 import Lender from "../models/Lender";
 
-function ScanPasLender(props:{setLender: (lender: Lender) => void}) {
+function ScanPasLender(props:{setLender: (lender: Partial<Lender>) => void}) {
 
   function getLenderByPassNumber(passNumber: string): Lender | undefined {
     if (passNumber === "12345") {
       return {
         id: "1",
-        name: "John Doe",
-        passNumber: "12345"
+        pasNumber: "12345",
+        name: "John",
+        surName: "Doe",
+        studentNumber: "123",
+        cohort: "2025",
+        education: "SD",
+        lastTimeLent: new Date,
       };
     }
     return undefined;
@@ -16,12 +21,10 @@ function ScanPasLender(props:{setLender: (lender: Lender) => void}) {
 
   function handleSubmit(formData: FormData) {
     const passNumber: string = formData.get("pasnummer") as string;
-    var lender: Lender | undefined = getLenderByPassNumber(passNumber as string);
+    var lender: Partial<Lender> | undefined = getLenderByPassNumber(passNumber as string);
     if (lender == undefined) {
       lender = {
-        id: "",
-        name: "",
-        passNumber: passNumber
+        pasNumber: passNumber
       };
     }
     props.setLender(lender);
