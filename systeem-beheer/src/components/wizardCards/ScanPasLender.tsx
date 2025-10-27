@@ -1,6 +1,7 @@
 import React from "react";
-import Lender from "../models/Lender";
-import NavBar from "./NavBar";
+import Lender from "../../models/Lender";
+import NavBar from "../NavBar";
+import "./WizardCards.css";
 
 function ScanPasLender(props: { setLender: (lender: Lender) => void }) {
   function getLenderByPassNumber(passNumber: string): Lender | undefined {
@@ -15,7 +16,7 @@ function ScanPasLender(props: { setLender: (lender: Lender) => void }) {
   }
 
   function handleSubmit(formData: FormData) {
-    const passNumber: string = formData.get("pasnummer") as string;
+    const passNumber: string = formData.get("passNumber") as string;
     var lender: Lender | undefined = getLenderByPassNumber(
       passNumber as string
     );
@@ -30,26 +31,25 @@ function ScanPasLender(props: { setLender: (lender: Lender) => void }) {
   }
 
   return (
-    <>
-      <NavBar />
-      <div className="card">
+    <div className="card">
+      <form action={handleSubmit}>
         <p className="card-title">Scan uw schoolpas</p>
-        <form action={handleSubmit}>
-          <div className="test">
-            Voer hier het pasID in
-            <input type="text" name="pasnummer" />
+        <div className="inputfields">
+          <div className="labeled-inputfield">
+            <label htmlFor="passNumber">Voer hier het pasID in</label>
+            <input type="text" name="passNumber" id="passNumber"/>
           </div>
-          <div className="card-button">
-            <button type="button" className="vorige">
-              Annuleren
-            </button>
-            <button type="submit" className="volgende">
-              Volgende
-            </button>
-          </div>
-        </form>
-      </div>
-    </>
+        </div>
+        <div className="card-button">
+          <button type="button" className="secondary-button">
+            Annuleren
+          </button>
+          <button type="submit" className="primary-button">
+            Volgende
+          </button>
+        </div>
+      </form>
+    </div>
   );
 }
 

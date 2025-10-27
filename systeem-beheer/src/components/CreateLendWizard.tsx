@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import Lender from "../models/Lender";
-import ScanPasLender from "./ScanPasLender";
+import ScanPasLender from "./wizardCards/ScanPasLender";
 
 function CreateLendWizard() {
   const navigate = useNavigate();
