@@ -1,6 +1,5 @@
 import React from "react";
 import Lender from "../../models/Lender";
-import NavBar from "../NavBar";
 import "./WizardCards.css";
 
 function ScanPasLender(props: { setLender: (lender: Lender) => void }) {

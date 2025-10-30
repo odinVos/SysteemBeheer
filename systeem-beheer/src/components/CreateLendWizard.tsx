@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import Lender from "../models/Lender";
 import ScanPasLender from "./wizardCards/ScanPasLender";
+import SelectProductLender from "./wizardCards/SelectProduct";
 
 function CreateLendWizard() {
   const navigate = useNavigate();
@@ -9,7 +10,7 @@ function CreateLendWizard() {
   const [lender , setLender] = useState<Lender| undefined>(undefined);
   const [activePage, setActivePage] = useState<string>("scan-pas");
 
-  function setLenderAndGoToNextPage( lender: Lender ) {
+  function setLenderAndGoToNextPage(lender: Lender) {
     setLender(lender);
 
     if (lender.id == "") {
@@ -23,7 +24,7 @@ function CreateLendWizard() {
   const pages: { [key: string]: React.ReactNode } = {
     "scan-pas": <ScanPasLender setLender={setLenderAndGoToNextPage}/>,
     "register-lender": <div>register-lender</div>,
-    "select-product": <div>select-product</div>,
+    "select-product": <SelectProductLender/>,
   }
 
   return (
