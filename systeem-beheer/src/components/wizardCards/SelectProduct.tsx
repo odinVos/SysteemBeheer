@@ -7,6 +7,7 @@ import AutoComplete from "../autoComplete/AutoComplete";
 function SelectProduct() {
   const [lends, setLends] = useState<Lend[]>([]);
   const [hardwares, setHardwares] = useState<Hardware[]>([]);
+  const [valueSelectHardware, setValueSelectHardware] = useState<Hardware | undefined>();
 
   useEffect(() => {
     setHardwares([
@@ -24,6 +25,14 @@ function SelectProduct() {
       { id: "12", barCode: "HIJ456", name: "Router TP-Link Archer C7" },
     ]);
   }, []);
+
+  function GetLabelElement(hardware: Hardware): React.ReactElement {
+    return (
+      <span>
+        {hardware.name} <span className="grey-text">&#40;{hardware.barCode}&#41;</span>
+      </span>
+    );
+  }
 
   function SearchHardware(searchParam: string): Hardware[] {
     var filteredHardware: Set<Hardware> = new Set();
@@ -52,6 +61,30 @@ function SelectProduct() {
     return Array.from(filteredHardware);
   }
 
+  function HandelKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      if (valueSelectHardware) {
+        const dateNow = new Date();
+        const newLend: Lend = {
+          id: "",
+          borrowerId: "", // TODO: set borrowerId
+          hardwareId: valueSelectHardware.id,
+          hardware: valueSelectHardware,
+          startDate: new Date(dateNow),
+          plannedReturnDate: new Date(new Date(new Date(dateNow).setDate(dateNow.getDate() + 7*10)).setHours(0,0,0,0)),
+          accessoryIds: [],
+          accessories: [],
+        }
+        console.log(newLend)
+      }
+    }
+  }
+
+  function HandelValueChange(hardware: Hardware | undefined) {
+    setValueSelectHardware(hardware)
+  }
+
   return (
     <div className="card">
       <form action={""}>
@@ -60,6 +93,7 @@ function SelectProduct() {
           <div className="labeled-inputfield">
           <label htmlFor="passNumber">Voer hier het pasID in</label>
             <AutoComplete
+              onKeyDown={HandelKeyDown}
               items={hardwares}
               onSearch={SearchHardware}
               labelKey="name"
@@ -71,6 +105,8 @@ function SelectProduct() {
               style={{
                 width: "100%",
               }}
+              getLabelElement={GetLabelElement}
+              onValueChange={HandelValueChange}
             />
           </div>
         </div>
