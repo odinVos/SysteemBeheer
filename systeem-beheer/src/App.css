@@ -6,7 +6,7 @@
 
 html {
   /* root font size */
-  font-size: 1vw; 
+  font-size: 1vw;
 }
 
 .container {
@@ -19,7 +19,8 @@ html {
   flex-direction: column;
 }
 
-.primary-button, .secondary-button {
+.primary-button,
+.secondary-button {
   border-radius: 1rem;
   padding: 0.6rem 1.2rem;
   height: fit-content;
@@ -38,7 +39,7 @@ html {
   cursor: pointer;
 }
 
-.secondary-button  {
+.secondary-button {
   background-color: #fff;
   color: #6e6eb4;
   box-shadow: inset 0 0 0 1px #6e6eb4;
@@ -64,6 +65,27 @@ html {
 }
 
 .navbottom {
-  height: 60px;
-  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  height: 4rem;
+}
+
+.navbottom ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  list-style: none;
+  width: 80rem;
+  margin: auto;
+}
+
+.navbottom li {
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+#logo {
+  position: relative;
+  top: -1rem;
 }
