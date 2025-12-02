@@ -1,5 +1,4 @@
 import React from "react";
-import CreateLendWizard from "./CreateLendWizard";
 
 function Home() {
   return (

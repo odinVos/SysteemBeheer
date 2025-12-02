@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import rocLogo from "../assets/logo-roc-nijmegen.png";
 
@@ -17,7 +17,12 @@ function NavBar() {
       <div className="navbottom">
         <ul>
           <li>
-            <img id="logo" onClick={() => goToPage("home")} src={rocLogo} />
+            <img
+              id="logo"
+              onClick={() => goToPage("home")}
+              src={rocLogo}
+              alt="ROC logo"
+            />
           </li>
           <li id="navlink" onClick={() => goToPage("home")}>
             Home
