@@ -1,34 +1,45 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import rocLogo from "../assets/logo-roc-nijmegen.png";
 
 function NavBar() {
   const navigate = useNavigate();
 
-  const [activePage, setActivePage] = useState<string>("scan-pas");
-
-  function goToPage() {
-    navigate("scan-pas");
+  function goToPage(page: string) {
+    navigate(`/${page}`);
   }
 
   return (
-    <div className="navbar">
+    <nav>
       <div className="navtop">
         <p>-</p>
       </div>
       <div className="navbottom">
         <ul>
           <li>
-            <img id="logo" src={require("./logo-roc-nijmegen.png")} />
+            <img id="logo" onClick={() => goToPage("home")} src={rocLogo} />
           </li>
-          <li onClick={goToPage}>Home</li>
-          <li>Uitlening afhandelen</li>
-          <li>Product uitlenen</li>
-          <li>Uitlening registreren</li>
-          <li>Product toevoegen</li>
-          <li>Product verwijderen</li>
+          <li id="navlink" onClick={() => goToPage("home")}>
+            Home
+          </li>
+          <li id="navlink" onClick={() => goToPage("")}>
+            Uitlening afhandelen
+          </li>
+          <li id="navlink" onClick={() => goToPage("create-lend")}>
+            Product uitlenen
+          </li>
+          <li id="navlink" onClick={() => goToPage("")}>
+            Uitlening registreren
+          </li>
+          <li id="navlink" onClick={() => goToPage("")}>
+            Product toevoegen
+          </li>
+          <li id="navlink" onClick={() => goToPage("")}>
+            Product verwijderen
+          </li>
         </ul>
       </div>
-    </div>
+    </nav>
   );
 }
 
