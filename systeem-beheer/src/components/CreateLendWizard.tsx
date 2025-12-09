@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
-import Lender from "../models/Lender";
+import Borrower from "../models/Borrower";
 import ScanPasLender from "./wizardCards/ScanPasLender";
 
 function CreateLendWizard() {
   const navigate = useNavigate();
 
-  const [lender, setLender] = useState<Lender | undefined>(undefined);
+  const [lender, setLender] = useState<Borrower | undefined>(undefined);
   const [activePage, setActivePage] = useState<string>("scan-pas");
 
-  function setLenderAndGoToNextPage(lender: Lender) {
+  function setLenderAndGoToNextPage(lender: Borrower) {
     setLender(lender);
 
     if (lender.id == "") {

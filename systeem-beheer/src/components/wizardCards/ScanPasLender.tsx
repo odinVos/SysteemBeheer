@@ -1,15 +1,21 @@
 import React from "react";
-import Lender from "../../models/Lender";
+import Lender from "../../models/Borrower";
 import NavBar from "../NavBar";
 import "./WizardCards.css";
+import Borrower from "../../models/Borrower";
 
-function ScanPasLender(props: { setLender: (lender: Lender) => void }) {
-  function getLenderByPassNumber(passNumber: string): Lender | undefined {
+function ScanPasLender(props: { setLender: (lender: Borrower) => void }) {
+  function getLenderByPassNumber(passNumber: string): Borrower | undefined {
     if (passNumber === "12345") {
       return {
         id: "1",
-        name: "John Doe",
+        name: "John",
+        surname: "Doe",
         passNumber: "12345",
+        studentNumber: "12345",
+        cohort: "ABC123",
+        education: "SD",
+        lastTimeLend: new Date()
       };
     }
     return undefined;
@@ -17,14 +23,19 @@ function ScanPasLender(props: { setLender: (lender: Lender) => void }) {
 
   function handleSubmit(formData: FormData) {
     const passNumber: string = formData.get("passNumber") as string;
-    var lender: Lender | undefined = getLenderByPassNumber(
+    var lender: Borrower | undefined = getLenderByPassNumber(
       passNumber as string
     );
     if (lender == undefined) {
       lender = {
         id: "",
         name: "",
+        surname: "",
         passNumber: passNumber,
+        studentNumber: "",
+        cohort: "",
+        education: "",
+        lastTimeLend: new Date()
       };
     }
     props.setLender(lender);
