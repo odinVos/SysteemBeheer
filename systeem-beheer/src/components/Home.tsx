@@ -1,9 +1,10 @@
 import React from "react";
-import CreateLendWizard from "./CreateLendWizard";
 
 function Home() {
   return (
-    <CreateLendWizard/>
+    <div>
+      <h1>Nog niets te zien ;D</h1>
+    </div>
   );
 }
 
