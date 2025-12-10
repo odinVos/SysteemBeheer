@@ -1,6 +1,6 @@
 import React from "react";
-import CreateBorrower from "../models/CreateBorrower";
-import Borrower from "../models/Borrower";
+import CreateBorrower from "../../models/CreateBorrower";
+import Borrower from "../../models/Borrower";
 
 function RegisterBorrower(props:{borrower: Borrower, setBorrower: (borrower: Borrower) => void }) {
   function createBorrower(borrower: CreateBorrower): Borrower | undefined{
