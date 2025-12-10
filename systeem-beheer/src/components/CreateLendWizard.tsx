@@ -1,22 +1,22 @@
 import React, { useState } from "react";
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
-import Lender from "../models/Lender";
-import ScanPasLender from "./ScanPasLender";
+import Borrower from "../models/Borrower";
+import ScanPasLender from "./wizardCards/ScanPasLender";
 import RegisterLender from "./RegisterLender";
 
 function CreateLendWizard() {
   const navigate = useNavigate();
 
-  const [lender , setLender] = useState<Partial<Lender>| undefined>(undefined);
+  const [lender, setLender] = useState<Borrower | undefined>(undefined);
   const [activePage, setActivePage] = useState<string>("scan-pas");
 
-  function setLenderAndGoToNextPage(lender: Partial<Lender>) {
+  function setLenderAndGoToNextPage(lender: Borrower) {
     setLender(lender);
 
     if (lender.id == undefined) {
       setActivePage("register-lender");
       return;
-    } 
+    }
 
     setActivePage("select-product");
   }
@@ -25,11 +25,11 @@ function CreateLendWizard() {
     "scan-pas": <ScanPasLender setLender={setLenderAndGoToNextPage}/>,
     "register-lender": <RegisterLender lender={lender!} setLender={setLenderAndGoToNextPage}/>,
     "select-product": <div>select-product</div>,
-  }
+  };
 
   return (
     <div>
-      lender: {lender?.name} - {lender?.pasNumber}
+      lender: {lender?.name} - {lender?.passNumber}
       <div></div>
       {pages[activePage]}
     </div>
