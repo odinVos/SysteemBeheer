@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import Borrower from "../models/Borrower";
 import ScanPassBorrower from "./wizardCards/ScanPassBorrower";
-import RegisterBorrower from "./RegisterBorrower";
+import RegisterBorrower from "./wizardCards/RegisterBorrower";
+import SelectProduct from "./wizardCards/SelectProduct";
 
 function CreateLendWizard() {
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ function CreateLendWizard() {
   const pages: { [key: string]: React.ReactNode } = {
     "scan-pas": <ScanPassBorrower setBorrower={setborrowerAndGoToNextPage}/>,
     "register-borrower": <RegisterBorrower borrower={borrower} setBorrower={setborrowerAndGoToNextPage}/>,
-    "select-product": <div>select-product</div>,
+    "select-product": <SelectProduct borrower={borrower}/>,
   };
 
   return (
