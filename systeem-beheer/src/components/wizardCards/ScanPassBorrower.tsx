@@ -3,7 +3,9 @@ import NavBar from "../NavBar";
 import "./WizardCards.css";
 import Borrower from "../../models/Borrower";
 
-function ScanPassBorrower(props: { setBorrower: (borrower: Borrower) => void }) {
+function ScanPassBorrower(props: {
+  setBorrower: (borrower: Borrower) => void;
+}) {
   function getBorrowerByPassNumber(passNumber: string): Borrower | undefined {
     if (passNumber === "12345") {
       return {
@@ -14,7 +16,7 @@ function ScanPassBorrower(props: { setBorrower: (borrower: Borrower) => void }) 
         studentNumber: "12345",
         cohort: "ABC123",
         education: "SD",
-        lastTimeLend: new Date()
+        lastTimeLend: new Date(),
       };
     }
     return undefined;
@@ -34,7 +36,7 @@ function ScanPassBorrower(props: { setBorrower: (borrower: Borrower) => void }) 
         studentNumber: "",
         cohort: "",
         education: "",
-        lastTimeLend: new Date()
+        lastTimeLend: new Date(),
       };
     }
     props.setBorrower(borrower);
@@ -47,7 +49,7 @@ function ScanPassBorrower(props: { setBorrower: (borrower: Borrower) => void }) 
         <div className="inputfields">
           <div className="labeled-inputfield">
             <label htmlFor="passNumber">Voer hier het pasID in</label>
-            <input type="text" name="passNumber" id="passNumber"/>
+            <input type="text" name="passNumber" id="passNumber" />
           </div>
         </div>
         <div className="card-button">
