@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 
-function LeaveRequest() {
+function ConnectionDatabase() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchLeaveRequest = async () => {
+    const fetchHardware = async () => {
       try {
         const url = `https://localhost:7083/api/hardware`;
 
@@ -22,12 +22,13 @@ function LeaveRequest() {
         setData(result);
       } catch (err) {
         console.log("e");
+        console.log(err);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchLeaveRequest();
+    fetchHardware();
   });
 
   if (loading) return <p>Loading...</p>;
@@ -41,4 +42,4 @@ function LeaveRequest() {
   );
 }
 
-export default LeaveRequest;
+export default ConnectionDatabase;
